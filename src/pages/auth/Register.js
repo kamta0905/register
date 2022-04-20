@@ -66,7 +66,7 @@ function Register() {
             </Form.Group>
             <Form.Group className="mb-2">
               <Form.Label>City</Form.Label>
-              <Form.Control type="text" onChange={(e) => setFullName(e.target.value)} value={city} placeholder="City" />
+              <Form.Control type="text" onChange={(e) => setCity(e.target.value)} value={city} placeholder="City" />
             </Form.Group>
 
             <Form.Group className="mb-2">
@@ -75,7 +75,7 @@ function Register() {
             </Form.Group>
             <Form.Label>Sex</Form.Label>
 
-            <Form.Select onChange={(e) => setFullName(e.target.value)} value={sex} aria-label="Default select example">
+            <Form.Select aria-label="Default select example">
               <option value="1">Male</option>
               <option value="2">Female</option>
             </Form.Select>
