@@ -1,21 +1,7 @@
 import React, { useState } from "react";
 import { Form, Card, Row, Col, Button, Container } from "react-bootstrap";
 
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/authContext";
-
 const Login = () => {
-  const navigation = useNavigate();
-  let auth = useAuth();
-
-  let { from } = navigation.state || { from: { pathname: "/" } };
-  const login = (event) => {
-    event.preventDefault();
-    auth.signin(() => {
-      navigation(from);
-    });
-  };
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -43,7 +29,7 @@ const Login = () => {
                 placeholder="Password"
               />
             </Form.Group>
-            <Button onClick={login} variant="primary" className="mt-3 mb-5" type="submit">
+            <Button variant="primary" className="mt-3 mb-5" type="submit">
               Login
             </Button>
           </Form>

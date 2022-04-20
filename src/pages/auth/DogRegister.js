@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 import { Col, Card, Button, Form, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
 const DogRegister = () => {
   const [dogname, setDogname] = useState("");
   const [age, setAge] = useState("");
   const [breed, setBreed] = useState("");
   const [sex, setSex] = useState("");
+  const navigation = useNavigate();
+  let auth = useAuth();
 
+  let { from } = navigation.state || { from: { pathname: "/" } };
+  const login = (event) => {
+    event.preventDefault();
+    auth.signin(() => {
+      navigation(from);
+    });
+  };
   return (
     <Container className="d-flex mt-3 justify-content-center" fluid>
       <Card className="col-5 shadow-lg p-3 mb-5 bg-body rounded ">
@@ -41,7 +52,7 @@ const DogRegister = () => {
               <Form.Control type="file" placeholder="profile" />
             </Form.Group>
 
-            <Button variant="primary" className="mt-3 mb-4" type="submit">
+            <Button variant="primary" className="mt-3 mb-4" onClick={login}>
               Submit
             </Button>
           </Form>
